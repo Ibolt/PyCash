@@ -9,7 +9,7 @@ import matplotlib
 
 #Backend of matplotlib to allow use with tkinter
 matplotlib.use("TkAgg")
-from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg, NavigationToolbar2TkAgg
+from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg, NavigationToolbar2Tk
 
 #Import figure object 
 from matplotlib.figure import Figure
@@ -384,10 +384,10 @@ class LoginPage(tk.Frame):
     def submit_info():
       name_entry = name_box.get()
       user_pass = pass_box.get()
-      
+
       if name_entry == co_name and user_pass == password:
-        controller.show_frame(HomePage)
-        
+        print("Correct Info Entered")
+        controller.show_frame(HomePage)        
 
     #Add profile image
     image = Image.open(logo_img)
@@ -599,13 +599,13 @@ class GraphPage(tk.Frame):
         canvas = FigureCanvasTkAgg(graph_figure, self)
       
         #Show canvas
-        canvas.show()
+        canvas.draw()
         
         #Position graph using pack
         canvas.get_tk_widget().pack(side=tk.TOP, fill=tk.BOTH, expand=True)
               
         #Add toolbar and position
-        toolbar = NavigationToolbar2TkAgg(canvas,self)
+        toolbar = NavigationToolbar2Tk(canvas,self)
         toolbar.update()
         canvas._tkcanvas.pack(side=tk.TOP, fill=tk.BOTH, expand=True)
         
